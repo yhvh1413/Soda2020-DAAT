@@ -2,10 +2,10 @@
 Soda2020比赛 - DAAT团队痕量分析
 
 ## 复赛作品
-- 1. `时尚标签转化_main.py`
+- `时尚标签转化_main.py`
 通过标签和语言转换时尚类标签——demo（basic）
 
-- 2.`yhvhdemo_main.py`
+- `yhvhdemo_main.py`
 痕量分析-demo（basic）
 
 
