@@ -1,7 +1,6 @@
 # coding=utf-8
 import wd
 
-
 def f_style(data):
     print("穿衣风格分析开始......")
     print("穿衣方式：常规-经典-流行-未来-独特")
