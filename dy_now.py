@@ -443,7 +443,7 @@ def num_cnt(x):
     else :
         pass
 
-date_dict = "/Users/roon/Desktop/YHVH/Soda复赛demo/data/day_dict.sql"
+date_dict = "/Users/Soda复赛daat/data/day_dict.sql"
 
 now = datetime.datetime.now()
 a = now.strftime('%Y-%m-%d%H:%M:%S')
