@@ -3,7 +3,10 @@ Soda2020比赛 - DAAT团队
 
 ## 复赛作品
 - `时尚标签转化_main.py`
-LiS - 小蜥系统——demo（细节喜好）
+LiS - 小蜥系统——demo（细节喜好nlp）
+
+- `Lis_main.py`
+LiS - 小蜥系统——demo(综合分析)
 
 - `result`
 LiS - 小蜥系统——demo（测试案例）
