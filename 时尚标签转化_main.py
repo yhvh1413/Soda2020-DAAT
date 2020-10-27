@@ -30,7 +30,7 @@ def f_style(data):
         "心情": data[1]+data[2]}
     print("可能会喜欢：", max(st3, key=lambda i: st3[i]))
 
-    print('-'*50)
+    print('～'*50)
     print("款式：宽松-运动-休闲-商务-正装-礼服	")
     st4 = {"宽松": data[0]+data[2], 
         "运动": data[0]+data[5], 
