@@ -1,11 +1,9 @@
 # coding=utf-8
+# coding=utf-8
 from matplotlib import pyplot as plt
 from matplotlib import font_manager
 import numpy as np
-import tm_now
-import dy_now
 import dy
-import wd
 import sys
 
 def fh_cal(nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
@@ -495,38 +493,16 @@ def style(data, nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
         st31, st32, st33, st34, st35, st36]
     return a
 
-def line_print(line1, l1_word, line2, l2_word, line3, l3_word, line4, l4_word):
-    my_font = font_manager.FontProperties(
-        fname="/System/Library/Fonts/PingFang.ttc")
-
-    y_1 = line1
-    y_2 = line2
-    y_3 = line3
-    y_4 = line4
-
-    x = range(1, 7)
-    plt.figure(figsize=(20, 8), dpi=80)
-    plt.plot(x, y_1, label=l1_word, color="yellow")
-    plt.plot(x, y_2, label=l2_word, color="blue", linestyle="--")
-    plt.plot(x, y_3, label=l3_word, color="green")
-    plt.plot(x, y_4, label=l4_word, color="orange", linestyle="--")
-    _xtick_labels = ["{}柱".format(i) for i in x]
-    plt.xticks(x, _xtick_labels, fontproperties=my_font)
-    plt.grid(alpha=0.4, linestyle=':')
-    plt.legend(prop=my_font, loc="upper left")
-    plt.show()
-
-def line_printh(name, num):
+def line_print(name, num):
     my_font = font_manager.FontProperties(fname="/System/Library/Fonts/Hiragino Sans GB.ttc")
     a = name
     b= num
-    plt.figure(figsize=(30,20),dpi=80)
+    plt.figure(figsize=(10,20),dpi=80)
     plt.barh(range(len(a)),b,height=0.2,color="orange")
     plt.yticks(range(len(a)),a,fontproperties=my_font)
     plt.grid(alpha=0.2)
     # plt.savefig("./movie.png")
     plt.show()
-
 
 def grph_lin(a, b):
     #绘制横着的条形图
@@ -906,12 +882,10 @@ if __name__ == "__main__":
     dy.month1
     dy.day1
     q = qst.a
-    w = wd.words
     pdc1 = ["品质", 1, 0, 1, 0, 0, 0]
     pdc2 = ["外观", 0, 1, 0, 1, 0, 0]
-    print(wd.words)
 
-    sys.stdout = Logger("/Users/Soda复赛daat/result/terminal1.txt")
+    sys.stdout = Logger("/Users/roon/Desktop/YHVH/Soda复赛demo/result/terminal1.txt")
 
     pod1 = percent(
         pdc1[1],
@@ -929,30 +903,6 @@ if __name__ == "__main__":
         pdc2[5],
         pdc2[6])
 
-    qust = percent(
-        q[0],
-        q[1],
-        q[2],
-        q[3],
-        q[4],
-        q[5])
-
-    tn = percent(
-        tm_now.nu1,
-        tm_now.nu2,
-        tm_now.nu3,
-        tm_now.nu4,
-        tm_now.nu5,
-        tm_now.nu6)
-
-    dn = percent(
-        dy_now.nu1,
-        dy_now.nu2,
-        dy_now.nu3,
-        dy_now.nu4,
-        dy_now.nu5,
-        dy_now.nu6)
-
     b = percent(
         dy.nu1,
         dy.nu2,
@@ -961,66 +911,6 @@ if __name__ == "__main__":
         dy.nu5,
         dy.nu6)
 
-    b_pu = percent(
-        dy.nu1_pu,
-        dy.nu2_pu,
-        dy.nu3_pu,
-        dy.nu4_pu,
-        dy.nu5_pu,
-        dy.nu6_pu)
-
-    b_Po = percent(
-        dy.nu1_Po,
-        dy.nu2_Po,
-        dy.nu3_Po,
-        dy.nu4_Po,
-        dy.nu5_Po,
-        dy.nu6_Po)
-
-    b_Ne = percent(
-        dy.nu1_Ne,
-        dy.nu2_Ne,
-        dy.nu3_Ne,
-        dy.nu4_Ne,
-        dy.nu5_Ne,
-        dy.nu6_Ne)
-
-    Po = percent(
-        dy.nu1_Po + dy.nu1_pu,
-        dy.nu2_Po + dy.nu2_pu,
-        dy.nu3_Po + dy.nu3_pu,
-        dy.nu4_Po + dy.nu4_pu,
-        dy.nu5_Po + dy.nu5_pu,
-        dy.nu6_Po + dy.nu6_pu)
-
-    Ne = percent(
-        dy.nu1_Ne + dy.nu1_pu,
-        dy.nu2_Ne + dy.nu2_pu,
-        dy.nu3_Ne + dy.nu3_pu,
-        dy.nu4_Ne + dy.nu4_pu,
-        dy.nu5_Ne + dy.nu5_pu,
-        dy.nu6_Ne + dy.nu6_pu)
-
-    bq_n = percent(
-        (qust[0] + b[0] / 2) * (dy.nu1 + dy.nu2 +
-                                dy.nu3 + dy.nu4 + dy.nu5 + dy.nu6),
-        (qust[1] + b[1] / 2) * (dy.nu1 + dy.nu2 +
-                                dy.nu3 + dy.nu4 + dy.nu5 + dy.nu6),
-        (qust[2] + b[2] / 2) * (dy.nu1 + dy.nu2 +
-                                dy.nu3 + dy.nu4 + dy.nu5 + dy.nu6),
-        (qust[3] + b[3] / 2) * (dy.nu1 + dy.nu2 +
-                                dy.nu3 + dy.nu4 + dy.nu5 + dy.nu6),
-        (qust[4] + b[4] / 2) * (dy.nu1 + dy.nu2 +
-                                dy.nu3 + dy.nu4 + dy.nu5 + dy.nu6),
-        (qust[5] + b[5] / 2) * (dy.nu1 + dy.nu2 + dy.nu3 + dy.nu4 + dy.nu5 + dy.nu6))
-    printord("天然状态",
-             bq_n[0],
-             bq_n[1],
-             bq_n[2],
-             bq_n[3],
-             bq_n[4],
-             bq_n[5])
-
     bq = percent(
         q[0] + dy.nu1,
         q[1] + dy.nu2,
@@ -1028,131 +918,12 @@ if __name__ == "__main__":
         q[3] + dy.nu4,
         q[4] + dy.nu5,
         q[5] + dy.nu6)
-    printord("现在状态",
-             bq[0],
-             bq[1],
-             bq[2],
-             bq[3],
-             bq[4],
-             bq[5])
-
-    bqw = percent(
-        q[0] + dy.nu1 + wd.nu1,
-        q[1] + dy.nu2 + wd.nu2,
-        q[2] + dy.nu3 + wd.nu3,
-        q[3] + dy.nu4 + wd.nu4,
-        q[4] + dy.nu5 + wd.nu5,
-        q[5] + dy.nu6 + wd.nu6)
-
-
-    w = percent(
-        wd.nu1,
-        wd.nu2,
-        wd.nu3,
-        wd.nu4,
-        wd.nu5,
-        wd.nu6)
-    printord("语句\t",
-             wd.nu1,
-             wd.nu2,
-             wd.nu3,
-             wd.nu4,
-             wd.nu5,
-             wd.nu6)
-
-    dt = percent(
-        tm_now.nu1 + dy_now.nu1,
-        tm_now.nu2 + dy_now.nu2,
-        tm_now.nu3 + dy_now.nu3,
-        tm_now.nu4 + dy_now.nu4,
-        tm_now.nu5 + dy_now.nu5,
-        tm_now.nu6 + dy_now.nu6)
-
-    bw = percent(
-        dy.nu1 + wd.nu1,
-        dy.nu2 + wd.nu2,
-        dy.nu3 + wd.nu3,
-        dy.nu4 + wd.nu4,
-        dy.nu5 + wd.nu5,
-        dy.nu6 + wd.nu6)
-
-    dtbw = percent(
-        dy_now.nu1 + tm_now.nu1 + dy.nu1 + wd.nu1,
-        dy_now.nu2 + tm_now.nu2 + dy.nu2 + wd.nu2,
-        dy_now.nu3 + tm_now.nu3 + dy.nu3 + wd.nu3,
-        dy_now.nu4 + tm_now.nu4 + dy.nu4 + wd.nu4,
-        dy_now.nu5 + tm_now.nu5 + dy.nu5 + wd.nu5,
-        dy_now.nu6 + tm_now.nu6 + dy.nu6 + wd.nu6)
-
-    dtw = percent(
-        dy_now.nu1 + tm_now.nu1 + wd.nu1,
-        dy_now.nu2 + tm_now.nu2 + wd.nu2,
-        dy_now.nu3 + tm_now.nu3 + wd.nu3,
-        dy_now.nu4 + tm_now.nu4 + wd.nu4,
-        dy_now.nu5 + tm_now.nu5 + wd.nu5,
-        dy_now.nu6 + tm_now.nu6 + wd.nu6)
-
-    dtb = percent(
-        dy_now.nu1 + tm_now.nu1 + dy.nu1,
-        dy_now.nu2 + tm_now.nu2 + dy.nu2,
-        dy_now.nu3 + tm_now.nu3 + dy.nu3,
-        dy_now.nu4 + tm_now.nu4 + dy.nu4,
-        dy_now.nu5 + tm_now.nu5 + dy.nu5,
-        dy_now.nu6 + tm_now.nu6 + dy.nu6)
-    printord("现在浮动\t",
-             dy_now.nu1 + tm_now.nu1 + dy.nu1,
-             dy_now.nu2 + tm_now.nu2 + dy.nu2,
-             dy_now.nu3 + tm_now.nu3 + dy.nu3,
-             dy_now.nu4 + tm_now.nu4 + dy.nu4,
-             dy_now.nu5 + tm_now.nu5 + dy.nu5,
-             dy_now.nu6 + tm_now.nu6 + dy.nu6)
-
-
-    wo_c_Po = comp(Po[0], w[0]) + comp(Po[1], w[1]) + comp(Po[2], w[2]) + \
-        comp(Po[3], w[3]) + comp(Po[4], w[4]) + comp(Po[5], w[5])
-    wo_c_Ne = comp(Ne[0], w[0]) + comp(Ne[1], w[1]) + comp(Ne[2], w[2]) + \
-        comp(Ne[3], w[3]) + comp(Ne[4], w[4]) + comp(Ne[5], w[5])
-
-    print("positive:\t %.2f" % wo_c_Po)
-    print("nagetive:\t %.2f" % wo_c_Ne)
-    if wo_c_Po < wo_c_Ne:
-        print('你说的话比较积极')
-    elif wo_c_Po > wo_c_Ne:
-        print('你说的话比较消极')
-    elif wo_c_Po == wo_c_Ne:
-        print('你说的话比较平静')
-
-    dtbw_c_Po = comp(Po[0], dtbw[0]) + comp(Po[1], dtbw[1]) + comp(Po[2], dtbw[2]) + \
-        comp(Po[3], dtbw[3]) + comp(Po[4], dtbw[4]) + comp(Po[5], dtbw[5])
-    dtbw_c_Ne = comp(Ne[0], dtbw[0]) + comp(Ne[1], dtbw[1]) + comp(Ne[2], dtbw[2]) + \
-        comp(Ne[3], dtbw[3]) + comp(Ne[4], dtbw[4]) + comp(Ne[5], dtbw[5])
-
-    print("positive:\t %.2f" % dtbw_c_Po)
-    print("nagetive:\t %.2f" % dtbw_c_Ne)
-    if wo_c_Po < wo_c_Ne:
-        print('现在你比较积极')
-    elif wo_c_Po > wo_c_Ne:
-        print('现在你比较消极')
-    elif wo_c_Po == wo_c_Ne:
-        print('现在你比较平静')
-
-    total_Po = dtbw_c_Po + wo_c_Po
-    total_Ne = dtbw_c_Po + wo_c_Ne
-
-    print("positive:\t %.2f" % total_Po)
-    print("nagetive:\t %.2f" % total_Ne)
-    if total_Po < total_Ne:
-        print('总体你比较积极')
-    elif total_Po > total_Ne:
-        print('总体你比较消极')
-    elif total_Po == total_Ne:
-        print('总体你比较平静')
 
     print("-"*100)
-    pod1_now = comp(pod1[0], w[0]) + comp(pod1[1], w[1]) + comp(pod1[2], w[2]) + \
-        comp(pod1[3], w[3]) + comp(pod1[4], w[4]) + comp(pod1[5], w[5])
-    pod2_now = comp(pod2[0], w[0]) + comp(pod2[1], w[1]) + comp(pod2[2], w[2]) + \
-        comp(pod2[3], w[3]) + comp(pod2[4], w[4]) + comp(pod2[5], w[5])
+    pod1_now = comp(pod1[0], bq[0]) + comp(pod1[1], bq[1]) + comp(pod1[2], bq[2]) + \
+        comp(pod1[3], bq[3]) + comp(pod1[4], bq[4]) + comp(pod1[5], bq[5])
+    pod2_now = comp(pod2[0], bq[0]) + comp(pod2[1], bq[1]) + comp(pod2[2], bq[2]) + \
+        comp(pod2[3], bq[3]) + comp(pod2[4], bq[4]) + comp(pod2[5], bq[5])
 
     pod1_me = comp(pod1[0], b[0]) + comp(pod1[1], b[1]) + comp(pod1[2], b[2]) + \
         comp(pod1[3], b[3]) + comp(pod1[4], b[4]) + comp(pod1[5], b[5])
@@ -1167,18 +938,6 @@ if __name__ == "__main__":
     elif pod1_me == pod2_me:
         print('两个都喜欢')
 
-    pod1_today = comp(pod1[0], dn[0]) + comp(pod1[1], dn[1]) + comp(pod1[2], dn[2]) + \
-        comp(pod1[3], dn[3]) + comp(pod1[4], dn[4]) + comp(pod1[5], dn[5])
-    pod2_today = comp(pod2[0], dn[0]) + comp(pod2[1], dn[1]) + comp(pod2[2], dn[2]) + \
-        comp(pod2[3], dn[3]) + comp(pod2[4], dn[4]) + comp(pod2[5], dn[5])
-    print("%s:\t %.2f" % (pdc1[0], pod1_today))
-    print("%s:\t %.2f" % (pdc2[0], pod2_today))
-    if pod1_today < pod2_today:
-        print('今天可能喜欢 %s' % pdc1[0])
-    elif pod1_today > pod2_today:
-        print('今天可能喜欢 %s' % pdc2[0])
-    elif pod1_today == pod2_today:
-        print('两个都喜欢')
 
     lk = ((pod1_now / (pod1_now + pod2_now)) +
           (pod1_me / (pod1_me + pod2_me))) / 2
@@ -1201,49 +960,39 @@ if __name__ == "__main__":
 
     print("-"*100)
     print("工作类型（最高值为适合的工作类型）：")
-    w1 = pus4("技能／建造", bqw[2], bqw[3], bqw[4], bqw[5],
+    w1 = pus4("技能／建造", bq[2], bq[3], bq[4], bq[5],
          nu3_avg, nu4_avg, nu5_avg, nu6_avg)
-    w2 = pus2("事务／文秘", bqw[3], bqw[4],
+    w2 = pus2("事务／文秘", bq[3], bq[4],
          nu4_avg, nu5_avg)
-    w3 = pus3("助人／服务", bqw[1], bqw[3], bqw[5],
+    w3 = pus3("助人／服务", bq[1], bq[3], bq[5],
          nu2_avg, nu4_avg, nu6_avg)
-    w4 = pus4("探索／研究", bqw[1], bqw[2], bqw[3], bqw[5],
+    w4 = pus4("探索／研究", bq[1], bq[2], bq[3], bq[5],
          nu2_avg, nu3_avg, nu4_avg, nu6_avg)
-    w5 = pus2("思想／理论", bqw[1], bqw[2],
+    w5 = pus2("思想／理论", bq[1], bq[2],
          nu2_avg, nu3_avg)
-    w6 = pus2("艺术／音乐", bqw[0], bqw[1],
+    w6 = pus2("艺术／音乐", bq[0], bq[1],
          nu1_avg, nu2_avg)
-    w7 = pus3("创造／设计", bqw[1], bqw[2], bqw[4],
+    w7 = pus3("创造／设计", bq[1], bq[2], bq[4],
          nu2_avg, nu3_avg, nu5_avg)
-    w8 = pus3("经营/金融", bqw[2], bqw[3], bqw[4],
+    w8 = pus3("经营/金融", bq[2], bq[3], bq[4],
          nu3_avg, nu4_avg, nu5_avg)
-    w9 = pus3("组织／管理", bqw[0], bqw[3], bqw[5],
+    w9 = pus3("组织／管理", bq[0], bq[3], bq[5],
          nu1_avg, nu4_avg, nu6_avg)
-    w10 = pus2("领导", bqw[0], bqw[3],
+    w10 = pus2("领导", bq[0], bq[3],
          nu1_avg, nu4_avg)
-    w11 = pus2("运动", bqw[0], bqw[5],
+    w11 = pus2("运动", bq[0], bq[5],
          nu1_avg, nu6_avg)
-    w12 = pus3("教育", bqw[1], bqw[2], bqw[3],
+    w12 = pus3("教育", bq[1], bq[2], bq[3],
          nu2_avg, nu3_avg, nu4_avg)
-    w13 = pus2("人力资源/公关", bqw[3], bqw[5],
+    w13 = pus2("人力资源/公关", bq[3], bq[5],
          nu4_avg, nu6_avg)
-    w14 = pus3("销售／市场", bqw[3], bqw[4], bqw[5],
+    w14 = pus3("销售／市场", bq[3], bq[4], bq[5],
          nu4_avg, nu5_avg, nu6_avg)
-    w15 = pus3("建设／管理", bqw[2], bqw[3], bqw[5],
+    w15 = pus3("建设／管理", bq[2], bq[3], bq[5],
          nu3_avg, nu4_avg, nu6_avg)
-    w16 = pus3("宗教／文化", bqw[0], bqw[1], bqw[3],
+    w16 = pus3("宗教／文化", bq[0], bq[1], bq[3],
          nu1_avg, nu2_avg, nu4_avg)
 
-    # 内外向
-    print("-"*100)
-    inside = bqw[0]+bqw[1]+bqw[2]
-    outside = bqw[3]+bqw[4]+bqw[5]
-    if inside > outside:
-        print('你是一个内向的人')
-    elif inside > outside:
-        print('你是一个外向的人')
-    elif inside == outside:
-        print('你是一个平衡的人')
 
     fh = fh_cal(dy.nu1_pu, dy.nu2_pu, dy.nu3_pu, dy.nu4_pu, dy.nu5_pu, dy.nu6_pu,
                 dy.nu1_Po, dy.nu2_Po, dy.nu3_Po, dy.nu4_Po, dy.nu5_Po, dy.nu6_Po,
@@ -1256,7 +1005,6 @@ if __name__ == "__main__":
           dy.nu1_Ne, dy.nu2_Ne, dy.nu3_Ne, dy.nu4_Ne, dy.nu5_Ne, dy.nu6_Ne,
           dy.nu1, dy.nu2, dy.nu3, dy.nu4, dy.nu5, dy.nu6)
 
-    line_print(b, "正常状态", dtb, "今天状态", bq_n, "目前状态", bw, "语句表达")
 
     # 职业图表
     w_a = ["技能／建造", "事务／文秘", "助人／服务", "探索／研究", "思想／理论", "艺术／音乐", "创造／设计", "经营/金融", "组织／管理_146", "领导_14", "运动_16", "教育_234", "人力资源/公关", "销售／市场", "建设／管理","宗教／文化"]
@@ -1266,6 +1014,6 @@ if __name__ == "__main__":
     # Lifestyle图表
     st_na = ['亮色/暗色', '性感/保守 ', '对称/不对称 ', '材料厚/材料薄 ', '材料硬/材料软 ', '外观/材质 ', '古怪/常规 ', '层次多/单层 ', '多色/单色 ', '全场焦点/低调 ', '反复审视/第一眼感觉 ', '仪式性/方便性 ', '吸汗/防水 ', '复杂/干净 ', '异域/古典 ', '白色/黑色 ', '开口大/开口小 ', '窄/宽 ', '用途/美观 ',
          '面料弹力大/面料无弹力 ', '皱褶,荷叶边/平整,净边 ', '紧身/舒适 ', '染色/水洗 ', '体积大/体积小 ', '图案密/图案疏 ', '镂空/无镂空 ', '很多饰品/无饰品 ', '打印图案/无图案 ', '物品带多角/物品边圆润 ', '整体/细节 ', '高于消费水平/低于消费水平 ', '活泼/严肃 ', '腰线低/腰线高 ', '暴露/遮盖 ', '注重后/注重前 ', '注重位置下/注重位置上']
-    line_printh(st_na, st_nm)
+    line_print(st_na, st_nm)
     
     
