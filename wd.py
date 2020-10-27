@@ -88,7 +88,7 @@ def word_cut(sent, num):
             break
 
 
-word_dict = "/Users/roon/Desktop/YHVH/Soda复赛demo/data/nlp_v.sql"
+word_dict = "/Users/Soda复赛daat//data/nlp_v.sql"
 
 print('请输入你的标签和词语')
 words = input("你现在想说: ")
