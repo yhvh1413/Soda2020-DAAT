@@ -5,7 +5,7 @@ Soda2020比赛 - DAAT团队
 - `时尚标签转化_main.py`
 LiS - 小蜥系统——demo（细节喜好）
 
-- `reesult`
+- `result`
 LiS - 小蜥系统——demo（测试案例）
 
 ## YHVH data analysis system - 痕量分析
