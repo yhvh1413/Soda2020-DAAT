@@ -1,10 +1,10 @@
-# coding=utf-8
-# coding=utf-8
+#coding=utf-8
+import csv
 from matplotlib import pyplot as plt
 from matplotlib import font_manager
 import numpy as np
-import dy
 import sys
+
 
 def fh_cal(nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
            nu1_po, nu2_po, nu3_po, nu4_po, nu5_po, nu6_po,
@@ -64,6 +64,7 @@ def fh_cal(nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
                 nu6_po_f, nu1_ne_f, nu2_ne_f, nu3_ne_f, nu4_ne_f, nu5_ne_f, nu6_ne_f, nu1_f, nu2_f, nu3_f, nu4_f, nu5_f, nu6_f]
 
     return fh_final
+
 
 def style(data, nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
           nu1_Po, nu2_Po, nu3_Po, nu4_Po, nu5_Po, nu6_Po,
@@ -487,37 +488,27 @@ def style(data, nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
     st36 = (st36_pu + st36_po + st36_ne + st36_nu) / 4
     print("注重位置下/注重位置上", st36)
 
-    a = [st1, st2, st3, st4, st5, st6, st7, st8, st9, st10, 
-        st11, st12, st13, st14, st15, st16, st17, st18, st19, st20, 
-        st21, st22, st23, st24, st25, st26, st27, st28, st29, st30,
-        st31, st32, st33, st34, st35, st36]
+    a = [st1, st2, st3, st4, st5, st6, st7, st8, st9, st10,
+         st11, st12, st13, st14, st15, st16, st17, st18, st19, st20,
+         st21, st22, st23, st24, st25, st26, st27, st28, st29, st30,
+         st31, st32, st33, st34, st35, st36]
     return a
 
+
 def line_print(name, num):
-    my_font = font_manager.FontProperties(fname="/System/Library/Fonts/Hiragino Sans GB.ttc")
+    my_font = font_manager.FontProperties(
+        fname="/System/Library/Fonts/Hiragino Sans GB.ttc")
     a = name
-    b= num
-    plt.figure(figsize=(10,20),dpi=80)
-    plt.barh(range(len(a)),b,height=0.2,color="orange")
-    plt.yticks(range(len(a)),a,fontproperties=my_font)
+    b = num
+    plt.figure(figsize=(10, 10), dpi=80)
+    plt.barh(range(len(a)), b, height=0.2, color="orange")
+    plt.yticks(range(len(a)), a, fontproperties=my_font)
     plt.grid(alpha=0.2)
     # plt.savefig("./movie.png")
     plt.show()
 
-def grph_lin(a, b):
-    #绘制横着的条形图
-    my_font = font_manager.FontProperties(
-    fname="/System/Library/Fonts/Hiragino Sans GB.ttc")
-    plt.figure(figsize=(20,8),dpi=80)
-    #绘制条形图
-    plt.barh(range(len(a)),b,height=0.3,color="orange")
-    #设置字符串到x轴
-    plt.yticks(range(len(a)),a,fontproperties=my_font)
-    plt.grid(alpha=0.3)
-    # plt.savefig("./movie.png")
-    plt.show()
 
-class Logger(object):  
+class Logger(object):
     def __init__(self, fileN="Default.log"):
         self.terminal = sys.stdout
         self.log = open(fileN, "a")
@@ -529,7 +520,8 @@ class Logger(object):
     def flush(self):
         pass
 
-def percent(nu1, nu2, nu3, nu4, nu5, nu6):  
+
+def percent(nu1, nu2, nu3, nu4, nu5, nu6):
     nu1_f = nu1 / (nu1 + nu2 + nu3 + nu4 + nu5 + nu6)
     nu2_f = nu2 / (nu1 + nu2 + nu3 + nu4 + nu5 + nu6)
     nu3_f = nu3 / (nu1 + nu2 + nu3 + nu4 + nu5 + nu6)
@@ -537,12 +529,13 @@ def percent(nu1, nu2, nu3, nu4, nu5, nu6):
     nu5_f = nu5 / (nu1 + nu2 + nu3 + nu4 + nu5 + nu6)
     nu6_f = nu6 / (nu1 + nu2 + nu3 + nu4 + nu5 + nu6)
     c_0 = [nu1_f, nu2_f, nu3_f, nu4_f, nu5_f, nu6_f, ]
-    mid_np = np.array(c_0)  
-    mid_np_2f = np.round(mid_np, 2)  
-    c = list(mid_np_2f)  
+    mid_np = np.array(c_0)
+    mid_np_2f = np.round(mid_np, 2)
+    c = list(mid_np_2f)
     return c
 
-def comp(a_1, a_2):  
+
+def comp(a_1, a_2):
     b_1 = float(a_1)
     if b_1 < 0:
         c_1 = -b_1
@@ -562,11 +555,8 @@ def comp(a_1, a_2):
         c = c_0
     return c
 
-def printord(name, a1, a2, a3, a4, a5, a6):  
-    print("%s\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f" %
-          (name, a1, a2, a3, a4, a5, a6))
 
-class lvl():  
+class lvl():
     def cut(max, avg, min):
         up = (max - avg) / 3
         dw = (avg - min) / 3
@@ -674,7 +664,8 @@ class lvl():
     nu6_Ne_c = cut(nu6_Ne_max, nu6_Ne_avg, nu6_Ne_min)
     nu6_c = cut(nu6_max, nu6_avg, nu6_min)
 
-class qst():  
+
+class qst():
     def question(q):
         if q == '1':
             n1 = 4
@@ -728,7 +719,8 @@ class qst():
     q_4 = input('4:哪个重要 \n甲： 自由 \t\t乙： 金钱\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_5 = input('5:有很重要工作要处理时 \n甲： 说出自己的意见，让别人去做 \t\t乙： 自己去处理比较好\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_6 = input('6:和别人发生冲突后 \n甲： 安抚对方的情绪 \t\t乙： 说明原因和理由\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
-    q_7 = input('7:你是 \n甲： 唯心 \t\t乙： 唯物\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
+    q_7 = input(
+        '7:你是 \n甲： 唯心 \t\t乙： 唯物\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_8 = input('8:你更喜欢哪一个 \n甲： 动听感人的音乐 \t\t乙： 美味可口的食物\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_9 = input('9:你认为命运是 \n甲： 天注定的 \t\t乙： 靠自己改变\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_10 = input('10:认识世界对你来说是 \n甲： 需要学习理解 \t\t乙： 存在就是合理的\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
@@ -746,9 +738,11 @@ class qst():
     q_22 = input('22:好东西是给 \n甲： 留给自己 \t\t乙： 大家一起分享的\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_23 = input('23:在电视里看到自己喜欢的菜 \n甲： 想去店里吃 \t\t乙： 想学怎么做\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_24 = input('24:遇到私人问题是 \n甲： 自己先尝试解决 \t\t乙： 找朋友聊天和读相关的书找方法\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
-    q_25 = input('25:成功是靠 \n甲： 自身的勤奋 \t\t乙： 靠头脑\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
+    q_25 = input(
+        '25:成功是靠 \n甲： 自身的勤奋 \t\t乙： 靠头脑\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_26 = input('26:自己成熟的证明是 \n甲： 内心历炼成长 \t\t乙： 事业和财富\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
-    q_27 = input('27:你是一个遇事 \n甲： 情绪冲动 \t\t乙： 头脑冷静\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
+    q_27 = input(
+        '27:你是一个遇事 \n甲： 情绪冲动 \t\t乙： 头脑冷静\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_28 = input('28:对于你“快乐”是 \n甲： 经历后的释然 \t\t乙： 建立在物质的富足上\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_29 = input('29:面对挑战你认为靠的是 \n甲： 自信和经验 \t\t乙： 学习和实践\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
     q_30 = input('30:好朋友有困难时你会 \n甲： 从实际出发帮他分析问题 \t\t乙： 义气的慷慨解囊\n1: 十分同意 甲 方的观点\t\t2: 比较同意 甲 方的观点\t\t3:  甲乙 双方观点都同意\t\t4: 比较同意 乙 方的观点\t\t5: 十分同意 乙 方的观点\n请输入：')
@@ -805,87 +799,61 @@ class qst():
 
     a = [nu1, nu2, nu3, nu4, nu5, nu6]
 
-def minu_s(Name, file, a1, a2, a3, a4, a5, a6, a7, b1, b2, b3, b4, b5, b6):
-    file[a1] = file[a1].apply(lambda x: abs(x - b1))
-    file[a2] = file[a2].apply(lambda x: abs(x - b2))
-    file[a3] = file[a3].apply(lambda x: abs(x - b3))
-    file[a4] = file[a4].apply(lambda x: abs(x - b4))
-    file[a5] = file[a5].apply(lambda x: abs(x - b5))
-    file[a6] = file[a6].apply(lambda x: abs(x - b6))
-    file[a7] = file[a1] + file[a2] + file[a3] + file[a4] + file[a5] + file[a6]
-    file.sort_values(by=a7, inplace=True)
-    print(Name)
-    print("May like:")
-    print(file.head(6))
-    print("May not:")
-    print(file.tail(3))
-
-def hl(t1, hg1, av1):  
-    if hg1 == "non":
-        a = (t1 - av1) / av1
-    elif hg1 == "high":
-        if t1 - av1 >= 0:
-            a = abs(t1 - av1)
-        else:
-            a = 0
-    elif hg1 == "low":
-        if t1 - av1 <= 0:
-            a = abs(t1 - av1)
-        else:
-            a = 0
-    return a
-    pass
-
-def pus2(name, t1, t2, av1, av2):
-    a = t1 + t2
-    b = av1 + av2
-    c = (a-b)/b
-    # print("%s: %f" % (name, a))
-    print("%s/平均值: %f" % (name, c))
-    return c
-
-def pus3(name, t1, t2, t3, av1, av2, av3):
-    a = t1 + t2 + t3
-    b = av1 + av2 + av3
-    c = (a-b)/b
-    # print("%s: %f" % (name, a))
-    print("%s/平均值: %f" % (name, c))
-    return c
-
-def pus4(name, t1, t2, t3, t4, av1, av2, av3, av4):
-    a = t1 + t2 + t3 + t4
-    b = av1 + av2 + av3 + av4
-    c = (a-b)/b
-    # print("%s: %f" % (name, a))
-    print("%s/平均值: %f" % (name, c))
-    return c
-
-def pus5(name, t1, t2, t3, t4, t5, av1, av2, av3, av4, av5):
-    a = t1 + t2 + t3 + t4 + t5
-    b = av1 + av2 + av3 + av4 + av5
-    c = (a-b)/b
-    # print("%s: %f" % (name, a))
-    print("%s/平均值: %f" % (name, c))
-    return c
-
-def pus6(name, t1, t2, t3, t4, t5, t6, av1, av2, av3, av4, av5, av6):
-    a = t1 + t2 + t3 + t4 + t5 + t6
-    b = av1 + av2 + av3 + av4 + av5 + av6
-    c = (a-b)/b
-    # print("%s: %f" % (name, a))
-    print("%s/平均值: %f" % (name, c))
-    return c
 
 if __name__ == "__main__":
     nm = input("您的名字： ")
-    dy.year1
-    dy.month1
-    dy.day1
+    year = input("年份YYYY：")
+    month = input("月份：")
+    day = input("日期：")
+    dates = str(year + "/" + month + "/" + day)
+
+    day_dict = "/Users/Soda2020-DAAT/data/day_1950-2000.csv"
+    with open(day_dict, 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        keywords = []
+        for row in csvfile:
+            keywords.append(row)
+
+        for i in range(len(keywords)):
+            if dates in keywords[i]:
+                dy = list(keywords[i].split(","))
+                print(dy)
+
+    nu1_pu = int(dy[1])
+    nu2_pu = int(dy[2])
+    nu3_pu = int(dy[3])
+    nu4_pu = int(dy[4])
+    nu5_pu = int(dy[5])
+    nu6_pu = int(dy[6])
+    nu1_Po = int(dy[7])
+    nu2_Po = int(dy[8])
+    nu3_Po = int(dy[9])
+    nu4_Po = int(dy[10])
+    nu5_Po = int(dy[11])
+    nu6_Po = int(dy[12])
+    nu1_Ne = int(dy[13])
+    nu2_Ne = int(dy[14])
+    nu3_Ne = int(dy[15])
+    nu4_Ne = int(dy[16])
+    nu5_Ne = int(dy[17])
+    nu6_Ne = int(dy[18])
+    nu1 = int(dy[19])
+    nu2 = int(dy[20])
+    nu3 = int(dy[21])
+    nu4 = int(dy[22])
+    nu5 = int(dy[23])
+    nu6 = int(dy[24])
+    print(nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
+          nu1_Po, nu2_Po, nu3_Po, nu4_Po, nu5_Po, nu6_Po,
+          nu1_Ne, nu2_Ne, nu3_Ne, nu4_Ne, nu5_Ne, nu6_Ne,
+          nu1, nu2, nu3, nu4, nu5, nu6)
+
     q = qst.a
     pdc1 = ["品质", 1, 0, 1, 0, 0, 0]
     pdc2 = ["外观", 0, 1, 0, 1, 0, 0]
 
-    sys.stdout = Logger("/Users/Soda复赛daat/result/terminal1.txt")
+    sys.stdout = Logger(
+        "/Users/roon/Desktop/YHVH/soda比赛/Soda2020-DAAT/result/terminal1.txt")
 
     pod1 = percent(
         pdc1[1],
@@ -904,20 +872,20 @@ if __name__ == "__main__":
         pdc2[6])
 
     b = percent(
-        dy.nu1,
-        dy.nu2,
-        dy.nu3,
-        dy.nu4,
-        dy.nu5,
-        dy.nu6)
+        nu1,
+        nu2,
+        nu3,
+        nu4,
+        nu5,
+        nu6)
 
     bq = percent(
-        q[0] + dy.nu1,
-        q[1] + dy.nu2,
-        q[2] + dy.nu3,
-        q[3] + dy.nu4,
-        q[4] + dy.nu5,
-        q[5] + dy.nu6)
+        q[0] + nu1,
+        q[1] + nu2,
+        q[2] + nu3,
+        q[3] + nu4,
+        q[4] + nu5,
+        q[5] + nu6)
 
     print("-"*100)
     pod1_now = comp(pod1[0], bq[0]) + comp(pod1[1], bq[1]) + comp(pod1[2], bq[2]) + \
@@ -938,7 +906,6 @@ if __name__ == "__main__":
     elif pod1_me == pod2_me:
         print('两个都喜欢')
 
-
     lk = ((pod1_now / (pod1_now + pod2_now)) +
           (pod1_me / (pod1_me + pod2_me))) / 2
     print("%.2f" % lk)
@@ -949,71 +916,18 @@ if __name__ == "__main__":
     elif pod1_me == 0.5:
         print('两个都喜欢')
 
-    x_avg = lvl.nu1_avg + lvl.nu2_avg + lvl.nu3_avg + \
-        lvl.nu4_avg + lvl.nu5_avg + lvl.nu6_avg
-    nu1_avg = lvl.nu1_avg / x_avg
-    nu2_avg = lvl.nu2_avg / x_avg
-    nu3_avg = lvl.nu3_avg / x_avg
-    nu4_avg = lvl.nu4_avg / x_avg
-    nu5_avg = lvl.nu5_avg / x_avg
-    nu6_avg = lvl.nu6_avg / x_avg
+    fh = fh_cal(nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
+                nu1_Po, nu2_Po, nu3_Po, nu4_Po, nu5_Po, nu6_Po,
+                nu1_Ne, nu2_Ne, nu3_Ne, nu4_Ne, nu5_Ne, nu6_Ne,
+                nu1, nu2, nu3, nu4, nu5, nu6)
 
     print("-"*100)
-    print("工作类型（最高值为适合的工作类型）：")
-    w1 = pus4("技能／建造", bq[2], bq[3], bq[4], bq[5],
-         nu3_avg, nu4_avg, nu5_avg, nu6_avg)
-    w2 = pus2("事务／文秘", bq[3], bq[4],
-         nu4_avg, nu5_avg)
-    w3 = pus3("助人／服务", bq[1], bq[3], bq[5],
-         nu2_avg, nu4_avg, nu6_avg)
-    w4 = pus4("探索／研究", bq[1], bq[2], bq[3], bq[5],
-         nu2_avg, nu3_avg, nu4_avg, nu6_avg)
-    w5 = pus2("思想／理论", bq[1], bq[2],
-         nu2_avg, nu3_avg)
-    w6 = pus2("艺术／音乐", bq[0], bq[1],
-         nu1_avg, nu2_avg)
-    w7 = pus3("创造／设计", bq[1], bq[2], bq[4],
-         nu2_avg, nu3_avg, nu5_avg)
-    w8 = pus3("经营/金融", bq[2], bq[3], bq[4],
-         nu3_avg, nu4_avg, nu5_avg)
-    w9 = pus3("组织／管理", bq[0], bq[3], bq[5],
-         nu1_avg, nu4_avg, nu6_avg)
-    w10 = pus2("领导", bq[0], bq[3],
-         nu1_avg, nu4_avg)
-    w11 = pus2("运动", bq[0], bq[5],
-         nu1_avg, nu6_avg)
-    w12 = pus3("教育", bq[1], bq[2], bq[3],
-         nu2_avg, nu3_avg, nu4_avg)
-    w13 = pus2("人力资源/公关", bq[3], bq[5],
-         nu4_avg, nu6_avg)
-    w14 = pus3("销售／市场", bq[3], bq[4], bq[5],
-         nu4_avg, nu5_avg, nu6_avg)
-    w15 = pus3("建设／管理", bq[2], bq[3], bq[5],
-         nu3_avg, nu4_avg, nu6_avg)
-    w16 = pus3("宗教／文化", bq[0], bq[1], bq[3],
-         nu1_avg, nu2_avg, nu4_avg)
-
-
-    fh = fh_cal(dy.nu1_pu, dy.nu2_pu, dy.nu3_pu, dy.nu4_pu, dy.nu5_pu, dy.nu6_pu,
-                dy.nu1_Po, dy.nu2_Po, dy.nu3_Po, dy.nu4_Po, dy.nu5_Po, dy.nu6_Po,
-                dy.nu1_Ne, dy.nu2_Ne, dy.nu3_Ne, dy.nu4_Ne, dy.nu5_Ne, dy.nu6_Ne,
-                dy.nu1, dy.nu2, dy.nu3, dy.nu4, dy.nu5, dy.nu6)
-
-    print("-"*100)
-    st_nm = style(fh, dy.nu1_pu, dy.nu2_pu, dy.nu3_pu, dy.nu4_pu, dy.nu5_pu, dy.nu6_pu,
-          dy.nu1_Po, dy.nu2_Po, dy.nu3_Po, dy.nu4_Po, dy.nu5_Po, dy.nu6_Po,
-          dy.nu1_Ne, dy.nu2_Ne, dy.nu3_Ne, dy.nu4_Ne, dy.nu5_Ne, dy.nu6_Ne,
-          dy.nu1, dy.nu2, dy.nu3, dy.nu4, dy.nu5, dy.nu6)
-
-
-    # 职业图表
-    w_a = ["技能／建造", "事务／文秘", "助人／服务", "探索／研究", "思想／理论", "艺术／音乐", "创造／设计", "经营/金融", "组织／管理_146", "领导_14", "运动_16", "教育_234", "人力资源/公关", "销售／市场", "建设／管理","宗教／文化"]
-    w_b=[w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12,w13,w14,w15,w16]
-    grph_lin(w_a, w_b)
+    st_nm = style(fh, nu1_pu, nu2_pu, nu3_pu, nu4_pu, nu5_pu, nu6_pu,
+                  nu1_Po, nu2_Po, nu3_Po, nu4_Po, nu5_Po, nu6_Po,
+                  nu1_Ne, nu2_Ne, nu3_Ne, nu4_Ne, nu5_Ne, nu6_Ne,
+                  nu1, nu2, nu3, nu4, nu5, nu6)
 
     # Lifestyle图表
     st_na = ['亮色/暗色', '性感/保守 ', '对称/不对称 ', '材料厚/材料薄 ', '材料硬/材料软 ', '外观/材质 ', '古怪/常规 ', '层次多/单层 ', '多色/单色 ', '全场焦点/低调 ', '反复审视/第一眼感觉 ', '仪式性/方便性 ', '吸汗/防水 ', '复杂/干净 ', '异域/古典 ', '白色/黑色 ', '开口大/开口小 ', '窄/宽 ', '用途/美观 ',
-         '面料弹力大/面料无弹力 ', '皱褶,荷叶边/平整,净边 ', '紧身/舒适 ', '染色/水洗 ', '体积大/体积小 ', '图案密/图案疏 ', '镂空/无镂空 ', '很多饰品/无饰品 ', '打印图案/无图案 ', '物品带多角/物品边圆润 ', '整体/细节 ', '高于消费水平/低于消费水平 ', '活泼/严肃 ', '腰线低/腰线高 ', '暴露/遮盖 ', '注重后/注重前 ', '注重位置下/注重位置上']
+             '面料弹力大/面料无弹力 ', '皱褶,荷叶边/平整,净边 ', '紧身/舒适 ', '染色/水洗 ', '体积大/体积小 ', '图案密/图案疏 ', '镂空/无镂空 ', '很多饰品/无饰品 ', '打印图案/无图案 ', '物品带多角/物品边圆润 ', '整体/细节 ', '高于消费水平/低于消费水平 ', '活泼/严肃 ', '腰线低/腰线高 ', '暴露/遮盖 ', '注重后/注重前 ', '注重位置下/注重位置上']
     line_print(st_na, st_nm)
-    
-    
