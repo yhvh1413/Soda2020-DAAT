@@ -802,9 +802,9 @@ class qst():
 
 if __name__ == "__main__":
     nm = input("您的名字： ")
-    year = input("年份YYYY：")
-    month = input("月份：")
-    day = input("日期：")
+    year = input("Demo日期从1950年/01月/01日-1911年/12月/31日\n年份YYYY：")
+    month = input("月份MM：")
+    day = input("日期DD：")
     dates = str(year + "/" + month + "/" + day)
 
     day_dict = "/Users/Soda2020-DAAT/data/day_1950-2000.csv"
