@@ -853,7 +853,7 @@ if __name__ == "__main__":
     pdc2 = ["外观", 0, 1, 0, 1, 0, 0]
 
     sys.stdout = Logger(
-        "/Users/roon/Desktop/YHVH/soda比赛/Soda2020-DAAT/result/terminal1.txt")
+        "/Users/Soda2020-DAAT/result/terminal1.txt")
 
     pod1 = percent(
         pdc1[1],
