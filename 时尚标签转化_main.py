@@ -41,8 +41,8 @@ def f_style(data):
     print("可能会喜欢：", max(st4, key=lambda i: st4[i]))
 
     print('～'*50)
-    print("材料：人工-天然-混合-舒适")
-    st5 = {"人工": data[3]+data[5], 
+    print("材料：人造-天然-混合-舒适")
+    st5 = {"人造": data[3]+data[5], 
         "天然": data[3]+data[4], 
         "混合": data[2]+data[3], 
         "舒适": data[1]+data[3]}
