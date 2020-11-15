@@ -1,3 +1,8 @@
+#Author: Luming Xu
+#Author email: roon69_244@icloud.com
+#Project: YHVH
+#Description: Data analysis for fashion style
+#2020-11-10
 # coding=utf-8
 import wd
 
