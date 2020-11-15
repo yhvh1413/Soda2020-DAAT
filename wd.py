@@ -1,3 +1,8 @@
+#Author: Luming Xu
+#Author email: roon69_244@icloud.com
+#Project: YHVH
+#Description: Nlp_demo_logic
+#2020-11-10
 #coding=utf-8
 import re
 import string
